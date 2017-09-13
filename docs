@@ -1,0 +1,9 @@
+aws cloudformation create-stack --stack-name myautoscaletest --template-body file:///home/ahmad/Desktop/chef-auto-scale1.yml 
+
+knife bootstrap 55.22.11.00 --ssh-user ubuntu --sudo --identity-file ~/key.pem --node-name node1
+mysqldump database_name -h database_endpoint -P 3306 -u username -ppassword > test2.sql
+mysqldump dbname -h dbendpoint -P 3306 -u dbuser -ppassword < test2.sql
+
+aws ec2 run-instances --image-id ami-xxxxxx --instance-type t2.micro --subnet-id subnet-xxxxxx  --associate-public-ip-address --security-group-ids sg-xxxxx --key-name testkey --iam-instance-profile Name=iamrolename --user-data file:///location/to/file
+
+
