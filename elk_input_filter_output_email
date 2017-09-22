@@ -1,0 +1,31 @@
+input {
+  stdin { }
+}
+
+filter {
+  grok {
+    match => { "message" => '%{WORD:FirstName} %{WORD:LastName} %{NUMBER:Age}'}
+  }
+}
+
+output {
+  stdout { codec => rubydebug }
+  email {
+    to => "ahmad@xxxxxxxxxxx"
+    via => "sendmail"
+    username => "ahmad@xxxxxxx"
+    password => "sender_email_password"
+    from => "ahmad@xxxxxxxxxxx"
+    subject => "sendmail email subject"
+    body => "body of email"
+  }
+  s3 {
+    access_key_id => "xxxxxxxxxxxxxxxxxx"
+    secret_access_key => "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+    bucket => "log4321"
+  }
+}
+
+
+
+
