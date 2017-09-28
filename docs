@@ -7,3 +7,21 @@ mysqldump dbname -h dbendpoint -P 3306 -u dbuser -ppassword < test2.sql
 aws ec2 run-instances --image-id ami-xxxxxx --instance-type t2.micro --subnet-id subnet-xxxxxx  --associate-public-ip-address --security-group-ids sg-xxxxx --key-name testkey --iam-instance-profile Name=iamrolename --user-data file:///location/to/file
 
 
+Auto confirm when running bash scripts
+---------------------------------------
+
+If you're presented with a bunch of responses like:
+
+    Press [ENTER] to continue or ctrl-c to cancel adding it
+
+You can do something like:
+
+add-apt-repository ppa:ondrej/php -y
+or
+yes '' |add-apt-repository ppa:ondrej/php
+
+ 
+https://askubuntu.com/questions/250861/auto-confirm-when-running-bash-scripts
+
+
+
