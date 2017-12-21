@@ -23,5 +23,31 @@ yes '' |add-apt-repository ppa:ondrej/php
  
 https://askubuntu.com/questions/250861/auto-confirm-when-running-bash-scripts
 
+How do I run a script at start up?
+---------------------------------
+
+sudo -i
+
+vi /etc/rc.local
+
+with content like the following:
+
+# This script is executed at the end of each multiuser runlevel
+/path/to/my/script.sh || exit 1   # Added by me
+exit 0
+
+Enter password in a bash script:
+echo NewPassword | passwd Username --stdin
+echo username:new_password | chpasswd
+echo -e "$password\n$password\n" | sudo passwd $user
+
+# quietly add a user without password
+adduser --quiet --disabled-password --shell /bin/bash --home /home/newuser --gecos "User" newuser
+
+# set password
+echo "newuser:newpassword" | chpasswd
+
+https://stackoverflow.com/questions/2150882/how-to-automatically-add-user-account-and-password-with-a-bash-script
+
 
 
